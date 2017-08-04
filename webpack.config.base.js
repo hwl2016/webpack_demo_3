@@ -1,5 +1,6 @@
 const path = require('path');
 const config = require('./system.config');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 function resolve(dir) {
     return path.join(__dirname, './', dir);
@@ -7,7 +8,8 @@ function resolve(dir) {
 
 module.exports = {
     entry: {
-        app: './src/main.js'
+        app: './src/main.js',
+        vender: ['jquery']
     },
     output: {
         path: config.build.assetsRoot,
@@ -17,9 +19,10 @@ module.exports = {
             : config.dev.assetsPublicPath
     },
     resolve: {
-        extensions: ['.js', '.json'],
+        extensions: ['.js', '.json', 'css'],
         alias: {
-            '@': resolve('src')
+            '@': resolve('src'),
+            'style': resolve('src/style')
         }
     },
     module: {
