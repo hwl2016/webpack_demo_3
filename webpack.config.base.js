@@ -22,7 +22,7 @@ module.exports = {
         extensions: ['.js', '.json', 'css'],
         alias: {
             '@': resolve('src'),
-            'style': resolve('src/style')
+            'assert': resolve('src/assert')
         }
     },
     module: {
@@ -51,6 +51,14 @@ module.exports = {
                 use: [
                     'ejs-loader'
                 ]
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: 'img/[name].[hash:7].[ext]'
+                }
             }
         ]
     }

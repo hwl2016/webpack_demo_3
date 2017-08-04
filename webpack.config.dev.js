@@ -8,9 +8,9 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 module.exports = merge(baseWebpackConfig, {
     devtool: '#cheap-module-eval-source-map',
     plugins: [
-        new webpack.DefinePlugin({
-            'process.env': config.dev.env
-        }),
+        // new webpack.DefinePlugin({
+        //     'process.env': config.dev.env
+        // }),
         // new webpack.HotModuleReplacementPlugin(),
         // new webpack.NoEmitOnErrorsPlugin(),
         new ExtractTextPlugin("css/style-[contenthash].css"),	//contenthash

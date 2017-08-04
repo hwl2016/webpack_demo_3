@@ -1,0 +1,11 @@
+body {
+    font-size: 0.14rem;
+}
+.box {
+    height: 2rem;
+}
+.box-2 {
+    height: 4rem;
+    background: url(../images/no-data.png) no-repeat center center;
+    background-size: 50%;
+}
