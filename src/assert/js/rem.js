@@ -1,4 +1,4 @@
-module.exports = function rem() {
+export default (function rem() {
     var fontSize = 100;	//根字体的大小
     var psdSize = 768;
     var phoneSize = psdSize / 2;
@@ -20,5 +20,6 @@ module.exports = function rem() {
         window.addEventListener(resizeEvt, recalc, false);
         document.addEventListener('DOMContentLoaded', recalc, false);
     }
-}
+    return 'remjs';
+})()
 

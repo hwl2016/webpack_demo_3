@@ -9,14 +9,11 @@ const path = require('path')
 module.exports = merge(baseWebpackConfig, {
     devtool: false,
     output: {
-        filename: 'js/[name]-[chunkhash].js'
+        filename: 'assert/js/[name]-[chunkhash].js'
     },
     plugins: [
         new webpack.DefinePlugin({
             'process.env': config.build.env
-        }),
-        new webpack.optimize.CommonsChunkPlugin({
-            names: ['vender']
         }),
         new webpack.optimize.UglifyJsPlugin({	//压缩js
             compress: {
@@ -25,10 +22,9 @@ module.exports = merge(baseWebpackConfig, {
             // beautify: true,
             comments: false,
         }),
-        new ExtractTextPlugin("css/style-[contenthash].css"),	//contenthash
         new HtmlWebpackPlugin({
             title: 'aaa',
-            template: path.resolve(__dirname, `./src/app.html`),
+            template: path.resolve(__dirname, `./src/app.ejs`),
             filename: `index.html`,
             hash: true,
             minify: {	//压缩html代码

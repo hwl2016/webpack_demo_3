@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const path = require('path');
 const config = require('./system.config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -9,11 +10,11 @@ function resolve(dir) {
 module.exports = {
     entry: {
         app: './src/main.js',
-        vender: ['jquery']
+        vender: ['jquery', 'lodash']
     },
     output: {
         path: config.build.assetsRoot,
-        filename: '[name].js',
+        filename: 'assert/js/[name].js',
         publicPath: process.env.NODE_ENV === 'production'
             ? config.build.assetsPublicPath
             : config.dev.assetsPublicPath
@@ -22,7 +23,8 @@ module.exports = {
         extensions: ['.js', '.json', 'css'],
         alias: {
             '@': resolve('src'),
-            'assert': resolve('src/assert')
+            'assert': resolve('src/assert'),
+            'views': resolve('src/views')
         }
     },
     module: {
@@ -53,14 +55,29 @@ module.exports = {
                 ]
             },
             {
+                test: /\.html/,
+                use: [
+                    'html-loader'
+                ]
+            },
+            {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: 'img/[name].[hash:7].[ext]'
+                    name: 'assert/img/[name].[hash:7].[ext]'
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            // $: "jquery"
+        }),
+        new webpack.optimize.CommonsChunkPlugin({
+            names: ['vender']
+        }),
+        new ExtractTextPlugin("assert/css/style-[contenthash].css"),	//contenthash
+    ]
 }
 

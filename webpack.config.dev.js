@@ -13,10 +13,9 @@ module.exports = merge(baseWebpackConfig, {
         // }),
         // new webpack.HotModuleReplacementPlugin(),
         // new webpack.NoEmitOnErrorsPlugin(),
-        new ExtractTextPlugin("css/style-[contenthash].css"),	//contenthash
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: './src/app.html',
+            template: './src/app.ejs',
             inject: true,
             chunks: ['vender', 'app']
         })
