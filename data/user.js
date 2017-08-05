@@ -1,41 +1,20 @@
 const express = require('express');
 const router = express.Router();
+const Mock = require('mockjs')
 
 router.get('/list', (req, res, next) => {
-    res.json({
+    let data = Mock.mock({
         code: 200,
         msg: 'success',
         data: {
-            users: [
-                {
-                    id: 1,
-                    name: 'Tom',
-                    age: 18
-                },
-                {
-                    id: 2,
-                    name: 'Mark',
-                    age: 13
-                },
-                {
-                    id: 3,
-                    name: 'Smith',
-                    age: 11
-                },
-                {
-                    id: 4,
-                    name: 'Jack',
-                    age: 28
-                },
-                {
-                    id: 5,
-                    name: 'Ason',
-                    age: 14
-                }
-            ]
+            'users|10': [{
+                'id': '@guid',
+                'name': '@cname',
+                'age|20-30': 1
+            }]
         }
-    })
+    });
+    res.json(data)
 });
-
 
 module.exports = router;
