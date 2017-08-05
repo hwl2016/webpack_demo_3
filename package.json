@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node server.js",
     "dev": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.dev.js --hot --color --progress",
-    "build": "./node_modules/.bin/webpack --config ./webpack.config.build.js --progress --display-modules --display-reasons --colors"
+    "build": "node build.js"
   },
   "keywords": [],
   "author": "",
@@ -21,6 +21,7 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",
+    "rimraf": "^2.6.1",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
     "webpack": "^3.4.1",
