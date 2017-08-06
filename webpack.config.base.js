@@ -10,6 +10,7 @@ function resolve(dir) {
 module.exports = {
     entry: {
         app: './src/main.js',
+        aaa: './src/views/aaa/index.js',
         vender: ['jquery', 'lodash']
     },
     output: {

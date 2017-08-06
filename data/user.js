@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Mock = require('mockjs')
+const Mock = require('mockjs');
 
 router.get('/list', (req, res, next) => {
     let data = Mock.mock({

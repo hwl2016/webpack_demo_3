@@ -23,7 +23,6 @@ module.exports = merge(baseWebpackConfig, {
             comments: false,
         }),
         new HtmlWebpackPlugin({
-            title: 'aaa',
             template: path.resolve(__dirname, `./src/app.ejs`),
             filename: `index.html`,
             hash: true,
@@ -32,6 +31,16 @@ module.exports = merge(baseWebpackConfig, {
                 collapseWhitespace: true	//删除空白符与换行符
             },
             chunks: ['vender', 'app']
+        }),
+        new HtmlWebpackPlugin({
+            filename: '/views/aaa/index.html',
+            template: './src/views/aaa/index.ejs',
+            hash: true,
+            minify: {	//压缩html代码
+                removeComments: true,	//移除注释
+                collapseWhitespace: true	//删除空白符与换行符
+            },
+            chunks: ['vender', 'aaa']
         })
     ]
 })

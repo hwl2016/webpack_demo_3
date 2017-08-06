@@ -18,6 +18,12 @@ module.exports = merge(baseWebpackConfig, {
             template: './src/app.ejs',
             inject: true,
             chunks: ['vender', 'app']
+        }),
+        new HtmlWebpackPlugin({
+            filename: 'views/aaa/index.html',
+            template: './src/views/aaa/index.ejs',
+            inject: true,
+            chunks: ['vender', 'aaa']
         })
     ],
     devServer: {
