@@ -1,5 +1,6 @@
 body {
     font-size: 0.14rem;
+    display: none;
 }
 .box {
     height: 2rem;
