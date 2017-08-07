@@ -2,21 +2,22 @@ const webpack = require('webpack')
 const path = require('path');
 const config = require('./system.config');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const utils = require('./utils');
 
 function resolve(dir) {
     return path.join(__dirname, './', dir);
 }
 
+let assert = process.env === 'production'
+    ? config.build.assetsSubDirectory
+    : config.dev.assetsSubDirectory;
+
 module.exports = {
-    entry: {
-        app: './src/main.js',
-        aaa: './src/views/aaa/index.js',
-        vender: ['jquery', 'lodash']
-    },
+    entry: utils.createEntryObj,
     output: {
         path: config.build.assetsRoot,
-        filename: 'assert/js/[name].js',
-        publicPath: process.env.NODE_ENV === 'production'
+        filename: `${assert}/js/[name].js`,
+        publicPath: process.env === 'production'
             ? config.build.assetsPublicPath
             : config.dev.assetsPublicPath
     },
@@ -25,7 +26,8 @@ module.exports = {
         alias: {
             '@': resolve('src'),
             'assert': resolve('src/assert'),
-            'views': resolve('src/views')
+            'views': resolve('src/views'),
+            'common': resolve('src/views/common')
         }
     },
     module: {
@@ -66,7 +68,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
-                    name: 'assert/img/[name].[hash:7].[ext]'
+                    name: `${assert}/images/[name].[ext]`
                 }
             }
         ]
@@ -78,7 +80,7 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vender']
         }),
-        new ExtractTextPlugin("assert/css/style-[contenthash].css"),	//contenthash
+        new ExtractTextPlugin(`${assert}/css/style-[contenthash].css`),	//contenthash
     ]
 }
 

@@ -5,42 +5,29 @@ const config = require('./system.config')
 const baseWebpackConfig = require('./webpack.config.base')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const path = require('path')
+const utils = require('./utils')
+
+let plugin = utils.createHtmlWebpackPlugin();
+
+plugin = plugin.concat([
+    new webpack.DefinePlugin({
+        'process.env': JSON.stringify(config.build.env),
+        'baseUrl': JSON.stringify(config.build.baseUrl),
+        'ajaxUrl': JSON.stringify(config.build.ajaxUrl)
+    }),
+    new webpack.optimize.UglifyJsPlugin({	//压缩js
+        compress: {
+            warnings: false
+        },
+        // beautify: true,
+        comments: false,
+    }),
+]);
 
 module.exports = merge(baseWebpackConfig, {
     devtool: false,
     output: {
         filename: 'assert/js/[name]-[chunkhash].js'
     },
-    plugins: [
-        new webpack.DefinePlugin({
-            'process.env': config.build.env
-        }),
-        new webpack.optimize.UglifyJsPlugin({	//压缩js
-            compress: {
-                warnings: false
-            },
-            // beautify: true,
-            comments: false,
-        }),
-        new HtmlWebpackPlugin({
-            template: path.resolve(__dirname, `./src/app.ejs`),
-            filename: `index.html`,
-            hash: true,
-            minify: {	//压缩html代码
-                removeComments: true,	//移除注释
-                collapseWhitespace: true	//删除空白符与换行符
-            },
-            chunks: ['vender', 'app']
-        }),
-        new HtmlWebpackPlugin({
-            filename: '/views/aaa/index.html',
-            template: './src/views/aaa/index.ejs',
-            hash: true,
-            minify: {	//压缩html代码
-                removeComments: true,	//移除注释
-                collapseWhitespace: true	//删除空白符与换行符
-            },
-            chunks: ['vender', 'aaa']
-        })
-    ]
-})
+    plugins: plugin
+});

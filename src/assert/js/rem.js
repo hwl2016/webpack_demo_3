@@ -1,4 +1,4 @@
-export default function rem() {
+function rem() {
     var fontSize = 100;	//根字体的大小
     var psdSize = 768;
     var phoneSize = psdSize / 2;
@@ -15,6 +15,7 @@ export default function rem() {
             }else {
                 docEl.style.fontSize = fontSize * (docEl.clientWidth / phoneSize) + 'px';
             }
+            document.body.style.display = 'block';  //解决页面闪动
         };
     if(window.addEventListener) {
         window.addEventListener(resizeEvt, recalc, false);
@@ -22,3 +23,4 @@ export default function rem() {
     }
 }
 
+module.exports = rem
