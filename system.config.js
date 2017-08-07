@@ -3,17 +3,19 @@ const path = require('path');
 module.exports = {
     build: {
         env: 'production',
-        port: 9000,
-        index: path.resolve(__dirname, './dist/index.html'),
         assetsRoot: path.resolve(__dirname, './dist'),
-        assetsSubDirectory: 'static',
-        assetsPublicPath: ''
+        assetsSubDirectory: 'assert',
+        assetsPublicPath: '',
+        baseUrl: 'http://haha:80',
+        ajaxUrl: 'http://abc:80'
     },
     dev: {
         env: 'development',
         port: 9000,
-        autoOpenBrowser: true,
-        assetsSubDirectory: 'static',
-        assetsPublicPath: '/'
+        assetsRoot: path.resolve(__dirname, './dist'),
+        assetsSubDirectory: 'assert',
+        assetsPublicPath: '/',
+        baseUrl: 'http://localhost:9000',
+        ajaxUrl: 'http://localhost:3000'
     }
 }

@@ -1,7 +1,8 @@
 import $ from 'jquery';
-import {baseUrl, ajaxUrl} from 'assert/js/config';
 import 'assert/style/reset.css';
 import 'assert/style/style.css';
+
+require('assert/js/rem')();
 
 $(function() {
     $('.box-2 button').click(function() {
