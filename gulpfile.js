@@ -1,9 +1,8 @@
 const gulp = require('gulp');
-const rm = require('rimraf')
-const path = require('path')
-const webpack = require('webpack')
-const webpackConfigProd = require('./webpack.config.build')
-const config = require('./system.config')
+const rm = require('rimraf');
+const webpack = require('webpack');
+const webpackConfigProd = require('./webpack.config.build');
+const config = require('./system.config');
 
 gulp.task('build', function() {
     rm(config.build.assetsRoot, err => {

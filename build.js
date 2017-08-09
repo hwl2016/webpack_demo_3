@@ -1,8 +1,7 @@
-const rm = require('rimraf')
-const path = require('path')
-const webpack = require('webpack')
-const webpackConfigProd = require('./webpack.config.build')
-const config = require('./system.config')
+const rm = require('rimraf');
+const webpack = require('webpack');
+const webpackConfigProd = require('./webpack.config.build');
+const config = require('./system.config');
 
 rm(config.build.assetsRoot, err => {
     if (err) throw err
