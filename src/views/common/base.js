@@ -2,9 +2,12 @@
  * 系统的配置模块
  */
 
-let v = 1.0;	//css和js的版本号
-const cssEjs = require('./css.ejs')({cssVersion: v});
-const scriptEjs = require('./script.ejs')({jsVersion: v});
+let obj = {
+    v: 1.0,
+    ctx: baseUrl
+}
+const cssEjs = require('./css.ejs')(obj);
+const scriptEjs = require('./script.ejs')(obj);
 
 module.exports = {
     cssEjs: cssEjs,

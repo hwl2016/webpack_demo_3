@@ -3,7 +3,7 @@ const path = require('path');
 const join = path.join;
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-let vender = ['jquery', 'lodash'];
+let vender = [];
 let modules = ['module1', 'module2', 'module3'];
 
 /**
@@ -67,12 +67,15 @@ function createHtmlWebpackPlugin() {
                 let sep = dir.split(path.sep);
                 let name = sep[sep.length - 1];
 
-                arr.push(new HtmlWebpackPlugin({
+                let options = {
                     filename: `views/${item}/${name}.html`,
                     template: `./src/views/${item}/${name}/${file.base}`,
                     inject: true,
-                    chunks: ['vender', `${name}`]
-                }));
+                    chunks: [
+                        'vender', `${name}`
+                    ]
+                };
+                arr.push(new HtmlWebpackPlugin(options));
             }
         });
     });

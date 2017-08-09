@@ -1,5 +1,5 @@
 function rem() {
-    var fontSize = 100;	//根字体的大小
+    var fontSize = 10;	//根字体的大小
     var psdSize = 768;
     var phoneSize = psdSize / 2;
     var maxSize = '140px';
@@ -23,4 +23,4 @@ function rem() {
     }
 }
 
-module.exports = rem
+rem();

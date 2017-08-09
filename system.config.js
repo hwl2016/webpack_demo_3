@@ -16,6 +16,6 @@ module.exports = {
         assetsSubDirectory: 'assert',
         assetsPublicPath: '/',
         baseUrl: 'http://localhost:9000',
-        ajaxUrl: 'http://localhost:3000'
+        ajaxUrl: 'http://localhost:9000'
     }
 }

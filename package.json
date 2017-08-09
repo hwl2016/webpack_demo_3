@@ -1,41 +1,42 @@
 {
-  "name": "webpack_demo_3",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "server": "supervisor server.js",
-    "dev": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.dev.js --hot --color --progress",
-    "build": "node build.js"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "babel-core": "^6.25.0",
-    "babel-loader": "^7.1.1",
-    "babel-preset-env": "^1.6.0",
-    "body-parser": "^1.17.2",
-    "cookie-parser": "^1.4.3",
-    "css-loader": "^0.28.4",
-    "ejs-loader": "^0.3.0",
-    "express": "^4.15.3",
-    "extract-text-webpack-plugin": "^3.0.0",
-    "file-loader": "^0.11.2",
-    "html-loader": "^0.5.0",
-    "html-webpack-plugin": "^2.30.1",
-    "mockjs": "^1.0.1-beta3",
-    "morgan": "^1.8.2",
-    "rimraf": "^2.6.1",
-    "serve-favicon": "^2.4.3",
-    "style-loader": "^0.18.2",
-    "url-loader": "^0.5.9",
-    "webpack": "^3.4.1",
-    "webpack-dev-server": "^2.6.1",
-    "webpack-merge": "^4.1.0"
-  },
-  "dependencies": {
-    "jquery": "^2.2.4",
-    "lodash": "^4.17.4"
-  }
+    "name": "webpack_demo_3",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "server": "set PORT=3000 && supervisor server.js",
+        "dev": "supervisor server.js",
+        "dev2": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.dev.js --hot --color --progress",
+        "build": "node build.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "babel-core": "^6.25.0",
+        "babel-loader": "^7.1.1",
+        "babel-preset-env": "^1.6.0",
+        "body-parser": "^1.17.2",
+        "cookie-parser": "^1.4.3",
+        "css-loader": "^0.28.4",
+        "ejs-loader": "^0.3.0",
+        "express": "^4.15.3",
+        "extract-text-webpack-plugin": "^3.0.0",
+        "file-loader": "^0.11.2",
+        "html-loader": "^0.5.0",
+        "html-webpack-plugin": "^2.30.1",
+        "mockjs": "^1.0.1-beta3",
+        "morgan": "^1.8.2",
+        "rimraf": "^2.6.1",
+        "serve-favicon": "^2.4.3",
+        "style-loader": "^0.18.2",
+        "url-loader": "^0.5.9",
+        "webpack": "^3.4.1",
+        "webpack-dev-server": "^2.6.1",
+        "webpack-merge": "^4.1.0"
+    },
+    "dependencies": {
+        "jquery": "^2.2.4",
+        "lodash": "^4.17.4"
+    }
 }

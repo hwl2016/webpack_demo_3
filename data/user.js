@@ -5,10 +5,14 @@ const Mock = require('mockjs');
 router.get('/list', (req, res, next) => {
     let data = Mock.mock({
         code: 200,
-        msg: 'success',
+        message: 'success',
         data: {
+            "totalCount": 50,
+            "pageNo": 1,
+            "pageSize": 10,
+            "totalPage": 5,
             'users|10': [{
-                'id': '@guid',
+                'id|+1': '10000',
                 'name': '@cname',
                 'age|20-30': 1
             }]

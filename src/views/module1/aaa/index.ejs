@@ -6,9 +6,25 @@
     <%=cfg.cssEjs%>
 </head>
 <body>
-    <div class="box">Webpack Config</div>
-    <img src="${baseUrl}/assert/images/no-data.png" alt="">
-
+    <h4>Webpack + Express</h4>
+    <div class="box">
+        <div id="wrapper_s">
+            <div id="scroller">
+                <ul class="data_list">
+                    <li>
+                        <span>ID</span><span>姓名</span><span>年龄</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="btn">click</div>
+    <img src="${require('assert/images/no-data.png')}" alt="">
+    <script type="text/template" id="template">
+        <li data-id="{{id}}">
+            <span>{{id}}</span><span>{{name}}</span><span>{{age}}</span>
+        </li>
+    </script>
     <%=cfg.scriptEjs%>
 </body>
 </html>

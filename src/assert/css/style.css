@@ -1,0 +1,26 @@
+body {
+    font-size: 1.4rem;
+    display: none;
+}
+.box {
+    height: 20rem;
+    position: relative;
+}
+.data_list span {
+    width: 33%;
+    display: inline-block;
+}
+.box-2 {
+    height: 40rem;
+    background: url(../images/no-data.png) no-repeat center center;
+    background-size: 50%;
+}
+.btn {
+    width: 5rem;
+    height: 3rem;
+    line-height: 3rem;
+    text-align: center;
+    margin: 0 auto;
+    cursor: pointer;
+    border: 1px solid #ddd;
+}

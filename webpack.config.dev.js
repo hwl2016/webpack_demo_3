@@ -9,6 +9,8 @@ const utils = require('./utils')
 let plugin = utils.createHtmlWebpackPlugin();
 
 plugin = plugin.concat([
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),
     new webpack.DefinePlugin({
         'process.env': JSON.stringify(config.dev.env),
         'baseUrl': JSON.stringify(config.dev.baseUrl),
@@ -20,11 +22,11 @@ plugin = plugin.concat([
 module.exports = merge(baseWebpackConfig, {
     devtool: '#cheap-module-eval-source-map',
     plugins: plugin,
-    devServer: {
-        contentBase: config.dev.assetsRoot,
-        historyApiFallback: true,
-        port: config.dev.port,
-        host: 'localhost',
-        inline: true
-    }
+    // devServer: {
+    //     contentBase: config.dev.assetsRoot,
+    //     historyApiFallback: true,
+    //     port: config.dev.port,
+    //     host: 'localhost',
+    //     inline: true
+    // }
 })

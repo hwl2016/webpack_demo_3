@@ -1,18 +1,42 @@
-import $ from 'jquery';
-import 'assert/style/reset.css';
-import 'assert/style/style.css';
-
-require('assert/js/rem')();
+import 'assert/css/style.css';
 
 $(function() {
-    $('.box-2 button').click(function() {
-        $.ajax({
-            url: ajaxUrl + '/user/list',
-            type: 'get',
-        }).done(function(res) {
-            console.log(res);
-        }).fail(function() {
-            console.log('ajax fail');
-        })
-    });
+    // $('.btn').click(function() {
+    //     $.ajax({
+    //         url: ajaxUrl + '/user/list',
+    //         type: 'get',
+    //     }).done(function(res) {
+    //         console.log(res);
+    //     }).fail(function() {
+    //         console.log('ajax fail');
+    //     })
+    // });
+
+    util.request({
+        url: ajaxUrl + '/user/list',
+        type: 'get',
+        data: {
+
+        },
+        template: '#template',
+        targetDom: '.data_list',
+        pagination: true,
+        dataFilter: function(res) {
+            var list = res.data.users;
+            var result = [];
+            _.each(list, function(ele, index, list) {
+                var obj = {};
+                obj.id = ele.id;
+                obj.name = ele.name;
+                obj.age = ele.age;
+                result.push(obj);
+            })
+            return result;
+        },
+        successFn: function(data) {
+            console.log(data);
+        }
+    })
+
+    toolKit.toast('haha...')
 })
