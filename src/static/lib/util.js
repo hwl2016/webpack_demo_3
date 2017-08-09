@@ -9,27 +9,6 @@
 
 	var opt_g;
 
-	var loadingHTML = '<div id="loadingToast" class="mocm_loading_toast" >' +
-                '<div class="mocm_mask_transparent"></div>' +
-                '<div class="mocm_toast">' +
-                    '<div class="mocm_loading">' +
-                        '<div class="mocm_loading_leaf mocm_loading_leaf_0"></div>' +
-                        '<div class="mocm_loading_leaf mocm_loading_leaf_1"></div>' +
-                        '<div class="mocm_loading_leaf mocm_loading_leaf_2"></div>' +
-                        '<div class="mocm_loading_leaf mocm_loading_leaf_3"></div>' +
-                        '<div class="mocm_loading_leaf mocm_loading_leaf_4"></div>' +
-                        '<div class="mocm_loading_leaf mocm_loading_leaf_5"></div>' +
-                        '<div class="mocm_loading_leaf mocm_loading_leaf_6"></div>' +
-                        '<div class="mocm_loading_leaf mocm_loading_leaf_7"></div>' +
-                        '<div class="mocm_loading_leaf mocm_loading_leaf_8"></div>' +
-                        '<div class="mocm_loading_leaf mocm_loading_leaf_9"></div>' +
-                        '<div class="mocm_loading_leaf mocm_loading_leaf_10"></div>' +
-                        '<div class="mocm_loading_leaf mocm_loading_leaf_11"></div>' +
-                    '</div>' +
-                    '<p class="mocm_toast_content">数据加载中</p>' +
-                '</div>' +
-            '</div>';
-
 	function request(settings) {
 		pageNum = 1;
 		var opt = $.extend({
@@ -65,14 +44,18 @@
 
 		var beforeFnBak = opt.beforeFn;
 		opt.beforeFn = function(xhr) {
-			_ajaxBefore(xhr);
+		    if(opt.loadingStatus) {
+                _ajaxBefore(xhr, opt.loadingText);
+            }
 			beforeFnBak(xhr);
 		}
 
 		var completeFnBak = opt.completeFn;
 		opt.completeFn = function(data) {
 			completeFnBak(data);
-			_ajaxComplete(data);
+            if(opt.loadingStatus) {
+                _ajaxComplete(data, opt.loadingText);
+            }
 		}
 
 		if(opt.template) {	//有页面拼接htmlDom的情况
@@ -182,14 +165,39 @@
 		setTimeout(function () { document.getElementById('wrapper_s').style.left = '0'; }, 800);
 	}
 
-	function _ajaxBefore(xhr) {
+    function _loadingHTML(txt) {
+        txt = !_.isUndefined(txt) ? txt : 'loading...';
+        return '<div id="loadingToast" class="mocm_loading_toast" >' +
+                '<div class="mocm_mask_transparent"></div>' +
+                '<div class="mocm_toast">' +
+                    '<div class="mocm_loading">' +
+                        '<div class="mocm_loading_leaf mocm_loading_leaf_0"></div>' +
+                        '<div class="mocm_loading_leaf mocm_loading_leaf_1"></div>' +
+                        '<div class="mocm_loading_leaf mocm_loading_leaf_2"></div>' +
+                        '<div class="mocm_loading_leaf mocm_loading_leaf_3"></div>' +
+                        '<div class="mocm_loading_leaf mocm_loading_leaf_4"></div>' +
+                        '<div class="mocm_loading_leaf mocm_loading_leaf_5"></div>' +
+                        '<div class="mocm_loading_leaf mocm_loading_leaf_6"></div>' +
+                        '<div class="mocm_loading_leaf mocm_loading_leaf_7"></div>' +
+                        '<div class="mocm_loading_leaf mocm_loading_leaf_8"></div>' +
+                        '<div class="mocm_loading_leaf mocm_loading_leaf_9"></div>' +
+                        '<div class="mocm_loading_leaf mocm_loading_leaf_10"></div>' +
+                        '<div class="mocm_loading_leaf mocm_loading_leaf_11"></div>' +
+                    '</div>' +
+                    '<p class="mocm_toast_content">' + txt + '</p>' +
+                '</div>' +
+            '</div>';
+    }
+
+	function _ajaxBefore(xhr, txt) {
 	    if($('#loadingToast').length > 0) {
 	        return
         }
-		$('body').append(loadingHTML);
+        var l = _loadingHTML(txt);
+		$('body').append(l);
 	}
 
-	function _ajaxComplete(xhr, pullRefresh) {
+	function _ajaxComplete(data) {
         $('#loadingToast').remove();
 	}
 

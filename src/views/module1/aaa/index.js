@@ -1,19 +1,8 @@
 import 'assert/css/style.css';
 
 $(function() {
-    // $('.btn').click(function() {
-    //     $.ajax({
-    //         url: ajaxUrl + '/user/list',
-    //         type: 'get',
-    //     }).done(function(res) {
-    //         console.log(res);
-    //     }).fail(function() {
-    //         console.log('ajax fail');
-    //     })
-    // });
-
     util.request({
-        url: ajaxUrl + '/user/list',
+        url: ajaxUrl + '/user/list/',
         type: 'get',
         data: {
 
@@ -21,6 +10,8 @@ $(function() {
         template: '#template',
         targetDom: '.data_list',
         pagination: true,
+        loadingStatus: true,
+        loadingText: '加载中...',
         dataFilter: function(res) {
             var list = res.data.users;
             var result = [];
@@ -36,7 +27,9 @@ $(function() {
         successFn: function(data) {
             console.log(data);
         }
-    })
+    });
 
-    toolKit.toast('haha...')
-})
+    $('.btn').click(e => {
+        toolKit.toast('haha...')
+    });
+});
