@@ -7,10 +7,12 @@
         "server": "set PORT=3000 && supervisor server.js",
         "dev": "supervisor server.js",
         "dev2": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.dev.js --hot --color --progress",
-        "build": "node build.js"
+        "release": "gulp run",
+        "build": "node build.js",
+        "copy": "gulp copy"
     },
     "keywords": [],
-    "author": "",
+    "author": "Huwenlong",
     "license": "ISC",
     "devDependencies": {
         "babel-core": "^6.25.0",

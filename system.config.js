@@ -6,8 +6,8 @@ module.exports = {
         assetsRoot: path.resolve(__dirname, './dist'),
         assetsSubDirectory: 'assert',
         assetsPublicPath: '',
-        baseUrl: 'http://haha:80',
-        ajaxUrl: 'http://abc:80'
+        baseUrl: 'http://localhost:9005',
+        ajaxUrl: 'http://localhost:3000'
     },
     dev: {
         env: 'development',

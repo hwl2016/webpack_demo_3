@@ -39,9 +39,9 @@
 			data: null,	//ajax传送的数据
             loadingStatus: true,
             loadingText: '数据加载中',
-			headers: {
-				'Request-Type': 'XMLHttpRequest'
-			},
+			// headers: {
+			// 	'Request-Type': 'XMLHttpRequest'
+			// },
 			beforeFn: function(xhr) {
 
 			},
