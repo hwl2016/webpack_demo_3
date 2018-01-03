@@ -8,8 +8,7 @@
     "dev": "supervisor server.js",
     "dev2": "./node_modules/.bin/webpack-dev-server --config ./webpack.config.dev.js --hot --color --progress",
     "release": "gulp run",
-    "build": "node build.js",
-    "copy": "gulp copy"
+    "build": "node build.js"
   },
   "keywords": [],
   "author": "Huwenlong",
